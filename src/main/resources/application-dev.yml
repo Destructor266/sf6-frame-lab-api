@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/characterapi
+    username: sf6
+    password: sf6dev
+  jpa:
+    show-sql: true

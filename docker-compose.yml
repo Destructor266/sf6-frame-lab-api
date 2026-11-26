@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sf6-db
+    environment:
+      POSTGRES_DB: characterapi
+      POSTGRES_USER: sf6
+      POSTGRES_PASSWORD: sf6dev
+    ports:
+      - "5432:5432"          # host:contenedor (tu PostgreSQL local ya ocupa el 5432)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sf6 -d characterapi"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata:
